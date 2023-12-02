@@ -1,27 +1,20 @@
-# Myapp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To deploy our Angular website to Github pages using Github Actions, follow the below steps:-
+1) create a file main.yaml in .github/workflows
+2) Yaml file has event (on) , jobs , runner (run-on) , steps
+3) We have chossen push on main braanch as event to trigger the workflow
+4) Once you commit in main branch, it wil trigger a workflow which you can track in Actions Tab.
+5) Here, we have used two steps :- checkout and custom step by Ayaz for github pages
+  
+  
+  name: Angular Deploy gh-pages Actions
+  on: 
+    push:  (push event/ pull-request )
+      branches:
+      - main   (main bracnh)
+  jobs:
+   build:
+    runs-on: Ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: All things angular
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-
